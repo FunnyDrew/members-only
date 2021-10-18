@@ -1,0 +1,12 @@
+<h1>Posts#index</h1>
+<p>Find me in app/views/posts/index.html.erb</p>
+<h2>Here is our posts</h2>
+<ul>
+  <% @posts.each do |post| %>
+  <li>
+    <%= post.title%>
+  </li>
+  <%end%>
+</ul>
+
+<%=link_to 'Sign out', destroy_user_session_path, :method => :delete %>
