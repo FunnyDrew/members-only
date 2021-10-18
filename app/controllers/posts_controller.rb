@@ -21,10 +21,13 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @render_post = []
+    @rendered_posts = []
     @posts.each do |post|
-      puts author = user_signed_in?
+      author_email = user_signed_in? ? User.find(post[:user_id])[:email] : "unonymous"
+      post_info = {author_email: author_email, title: post[:title]}
+      @rendered_posts << (post_info)
     end
+    @rendered_posts
   end
 
   private
